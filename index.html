@@ -1,5 +1,5 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Meu Painel</title>
+<title>Órbita</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -8,7 +8,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Meu Painel">
+<meta name="apple-mobile-web-app-title" content="Órbita">
 <style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;-webkit-tap-highlight-color:transparent}img{max-width:100%}[hidden]{display:none!important}</style></head><body>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500&display=swap">
 <style>
@@ -429,7 +429,7 @@ document.getElementById("foot").textContent=standalone?"Funciona sem internet. S
 /* ---------- backup ---------- */
 document.getElementById("bk-out").onclick=()=>{
   const blob=new Blob([JSON.stringify({app:"meu-painel",v:1,at:new Date().toISOString(),data:S},null,2)],{type:"application/json"});
-  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`meu-painel-backup-${TODAY}.json`;
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`orbita-backup-${TODAY}.json`;
   document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
 };
 document.getElementById("bk-in").onclick=()=>document.getElementById("bk-file").click();
@@ -441,7 +441,7 @@ document.getElementById("bk-file").onchange=async e=>{
     if(!confirm("Substituir os dados atuais pelos do backup?"))return;
     change(s=>{Object.keys(s).forEach(k=>delete s[k]);Object.assign(s,EMPTY(),data)});
     alert("Backup importado.");
-  }catch(err){alert("Esse arquivo não é um backup válido do Meu Painel.")}
+  }catch(err){alert("Esse arquivo não é um backup válido do Órbita.")}
 };
 
 /* ---------- app offline ---------- */
